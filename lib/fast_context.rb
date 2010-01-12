@@ -37,12 +37,20 @@ module Shoulda
       context = self
       test_unit_class.send(:define_method, test_name) do
         @shoulda_context = context
+        @current_should = nil
         begin
           context.run_parent_setup_blocks(self)
-          context.shoulds.each {|s| s[:before].bind(self).call if s[:before] }
+          context.shoulds.each do |s| 
+            @current_should = s
+            s[:before].bind(self).call if s[:before] 
+          end
           context.run_current_setup_blocks(self)
 
           context.shoulds.each {|should| should[:block].bind(self).call }
+        rescue Test::Unit::AssertionFailedError => e
+          error = Test::Unit::AssertionFailedError.new(["FAILED:", context.full_name, "should", "#{@current_should[:name]}:", e.message].flatten.join(' '))
+          error.set_backtrace e.backtrace
+          raise error
         ensure
           context.run_all_teardown_blocks(self)
         end
