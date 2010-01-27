@@ -9,7 +9,7 @@ $TOP_SETUP_COUNT = 0
 $INNER_SETUP_COUNT = 0
 $INNER_MOST_SETUP_COUNT = 0
 
-class Fastfast_contextTest < ActiveSupport::TestCase
+class FastContextTest < ActiveSupport::TestCase
   
   fast_context "Top fast_context" do
     setup do 
