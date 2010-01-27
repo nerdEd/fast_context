@@ -1,15 +1,14 @@
 require 'rubygems'
-require 'test/unit'
+require 'active_support'
 require 'redgreen'
 require 'shoulda'
-require 'active_support'
 require File.join(File.dirname( __FILE__), '..', 'lib', 'fast_context.rb')
 
 $TOP_SETUP_COUNT = 0
 $INNER_SETUP_COUNT = 0
 $INNER_MOST_SETUP_COUNT = 0
 
-class FastContextTest < ActiveSupport::TestCase
+class ActiveSupportFastContextTest < ActiveSupport::TestCase
   
   fast_context "Top fast_context" do
     setup do 
