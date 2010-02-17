@@ -103,7 +103,7 @@ module TestUnitOutputHelpers
 end
 
 ActiveSupport::TestCase.send(:include, FastContextMethods) if defined? ActiveSupport::TestCase
-Test::Unit::TestCase.send(:include, FastContextMethods)
+Test::Unit::TestCase.send(:include, FastContextMethods) if defined? Test::Unit::TestCase
 Test::Unit::TestCase.send(:include, TestUnitOutputHelpers)
 
 Shoulda::Context.send :include, ShouldaContextExtensions
