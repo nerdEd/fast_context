@@ -5,7 +5,7 @@ module ShouldaContextExtensions
   def self.included(base)
     base.class_eval do
       alias_method :build_without_fast_context, :build
-      alias_method :build, :fast_context
+      alias_method :build, :build_with_fast_context
       
       alias_method :am_subcontext_without_fast_context?, :am_subcontext?
       alias_method :am_subcontext?, :am_subcontext_with_fast_context?

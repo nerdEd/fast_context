@@ -9,6 +9,17 @@ $INNER_SETUP_COUNT = 0
 $INNER_MOST_SETUP_COUNT = 0
 
 class TestUnitFastContextText < Test::Unit::TestCase
+  
+  context "with a normal test" do
+    setup do
+      @x = "some setup data"
+    end
+
+    should "test something and not fail" do
+      assert true
+    end
+  end
+
   fast_context "Top fast_context" do
     setup do 
       $TOP_SETUP_COUNT += 1

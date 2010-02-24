@@ -10,6 +10,12 @@ $INNER_MOST_SETUP_COUNT = 0
 
 class ActiveSupportFastContextTest < ActiveSupport::TestCase
   
+  context "And running a proper shoulda context" do
+    should "not break at all" do
+      assert true
+    end  
+  end
+  
   fast_context "Top fast_context" do
     setup do 
       $TOP_SETUP_COUNT += 1
